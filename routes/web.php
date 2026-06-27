@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -17,6 +17,9 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('Portfolio');
 })->name('home');
+
+// Contact form route
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

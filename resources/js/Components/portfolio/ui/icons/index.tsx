@@ -73,7 +73,7 @@ export const IconMail: React.FC<IconProps> = ({ className = '', size = 16 }) => 
     </svg>
 );
 
-export const IconLinkedin: React.FC<IconProps> = ({ className = '', size = 16 }) => (
+export const IconJobStreet: React.FC<IconProps> = ({ className = '', size = 16 }) => (
     <svg 
         className={className}
         width={size} 
@@ -85,9 +85,9 @@ export const IconLinkedin: React.FC<IconProps> = ({ className = '', size = 16 })
         strokeLinecap="round" 
         strokeLinejoin="round"
     >
-        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-        <rect x="2" y="9" width="4" height="12"/>
-        <circle cx="4" cy="4" r="2"/>
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+        <path d="M8 8h8v2H8zM8 12h6v2H8zM8 16h4v2H8z"/>
+        <path d="M18 8l-2 4 2 4"/>
     </svg>
 );
 

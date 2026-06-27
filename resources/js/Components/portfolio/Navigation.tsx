@@ -23,6 +23,13 @@ export function Navigation({ onNavigate }: NavigationProps) {
         onNavigate(href);
     };
 
+    const scrollToTop = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+};
+
     return (
         <nav 
             className={`
@@ -37,9 +44,12 @@ export function Navigation({ onNavigate }: NavigationProps) {
             `}
         >
             {/* Logo/Brand */}
-            <div className="font-mono text-sm text-[#63b3ed] tracking-[0.06em] select-none">
-                &lt;josh /&gt;
-            </div>
+            <div 
+    onClick={scrollToTop}
+    className="font-mono text-sm text-[#63b3ed] tracking-[0.06em] select-none hover:text-[#7cc4f0] transition-colors duration-200 cursor-pointer"
+>
+    &lt;josh /&gt;
+</div>
 
             {/* Desktop Navigation */}
             <ul className="hidden md:flex items-center gap-9 list-none">

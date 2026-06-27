@@ -14,7 +14,7 @@ function SkillCard({ skill, index }: SkillCardProps) {
     return (
         <div
             ref={ref}
-            className="bg-white/5 border border-white/5 rounded-xl p-4 flex items-center gap-3 cursor-default transition-all hover:-translate-y-0.5"
+            className="bg-white/5 border border-white/5 rounded-xl p-4 flex items-center gap-3 cursor-default transition-all hover:-translate-y-0.5 flex-shrink-0 w-[190px]"
             style={{
                 opacity: inView ? 1 : 0,
                 transform: inView ? 'none' : 'translateY(20px)',
@@ -49,8 +49,17 @@ function SkillCard({ skill, index }: SkillCardProps) {
 }
 
 export function Skills() {
+    // Split skills into two rows
+    const halfLength = Math.ceil(SKILLS.length / 2);
+    const firstRow = SKILLS.slice(0, halfLength);
+    const secondRow = SKILLS.slice(halfLength);
+
+    // Duplicate skills for seamless looping (3x for smooth infinite scroll)
+    const duplicatedFirstRow = [...firstRow, ...firstRow, ...firstRow];
+    const duplicatedSecondRow = [...secondRow, ...secondRow, ...secondRow];
+
     return (
-        <section id="skills" className="py-22 px-6 md:px-12 relative z-10">
+        <section id="skills" className="py-22 px-6 md:px-12 relative z-10 overflow-hidden">
             <div className="max-w-[1100px] mx-auto">
                 <Fade>
                     <div className="mb-12">
@@ -63,10 +72,24 @@ export function Skills() {
                     </div>
                 </Fade>
 
-                <div className="grid grid-cols-[repeat(auto-fill,minmax(190px,1fr))] gap-3">
-                    {SKILLS.map((skill, index) => (
-                        <SkillCard key={skill.name} skill={skill} index={index} />
-                    ))}
+                <div className="flex flex-col gap-3">
+                    {/* First Row - Moves Right */}
+                    <div className="relative overflow-hidden">
+                        <div className="flex gap-3 animate-marquee-right w-max">
+                            {duplicatedFirstRow.map((skill, index) => (
+                                <SkillCard key={`${skill.name}-${index}`} skill={skill} index={index} />
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Second Row - Moves Left */}
+                    <div className="relative overflow-hidden">
+                        <div className="flex gap-3 animate-marquee-left w-max">
+                            {duplicatedSecondRow.map((skill, index) => (
+                                <SkillCard key={`${skill.name}-${index}`} skill={skill} index={index} />
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

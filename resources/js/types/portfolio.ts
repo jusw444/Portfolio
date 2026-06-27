@@ -36,5 +36,5 @@ export interface PersonalInfo {
     photo: string;
     bio: string[];
     github: string;
-    linkedin: string;
+    jobstreet: string;
 }
