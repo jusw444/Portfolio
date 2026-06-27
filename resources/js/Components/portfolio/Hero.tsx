@@ -14,72 +14,20 @@ export function Hero({ onNavigate }: HeroProps) {
     }, []);
 
     return (
-        <section 
-            id="home" 
+        <section
+            id="home"
             className="min-h-screen flex items-center px-6 md:px-12 relative z-10"
-            style={{ paddingTop: '120px', paddingBottom: '80px' }}
+            style={{ paddingTop: '100px', paddingBottom: '80px' }}
         >
             <div className="max-w-[1100px] mx-auto w-full">
-                <div className="grid md:grid-cols-2 gap-12 items-center">
-                    
-                    {/* Left Column - Content */}
+                <div className="flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-12 items-center">
+
+                    {/* Photo — shown on top for mobile, right column on desktop */}
                     <div
-                        className="transition-all duration-700 ease-out"
+                        className="flex justify-center md:order-2"
                         style={{
                             opacity: isVisible ? 1 : 0,
                             transform: isVisible ? 'none' : 'translateY(20px)',
-                            transitionDelay: '100ms',
-                        }}
-                    >
-                        {/* Badge */}
-                        <div className="font-mono text-xs text-[#63b3ed] uppercase tracking-[0.15em] mb-5 flex items-center gap-2.5">
-                            <span className="inline-block w-6 h-px bg-[#63b3ed]" />
-                            Full Stack Developer · {PERSONAL_INFO.location}
-                        </div>
-
-                        {/* Heading */}
-                        <h1 className="font-[Syne] text-[clamp(44px,6vw,72px)] font-extrabold leading-[1.05] tracking-[-0.03em] mb-4 text-[#f8fafc]">
-                            Hi, I'm<br />
-                            <span className="bg-gradient-to-r from-[#63b3ed] via-[#7c6ff7] to-[#68d391] bg-clip-text text-transparent">
-                                {PERSONAL_INFO.name}
-                            </span>
-                        </h1>
-
-                        {/* Subtitle */}
-                        <p className="font-[Syne] text-[clamp(16px,2vw,20px)] text-[#64748b] mb-6 leading-[1.5]">
-                            I craft scalable web apps with<br />
-                            <span className="text-[#94a3b8]">Laravel · React · TypeScript</span>
-                        </p>
-
-                        {/* Description */}
-                        <p className="text-sm text-[#64748b] leading-[1.85] max-w-[430px] mb-10">
-                            From RESTful APIs to interactive React frontends — I build full stack applications
-                            that are fast, maintainable, and delightful to use.
-                        </p>
-
-                        {/* CTA Buttons */}
-                        <div className="flex gap-3 flex-wrap">
-                            <button
-                                onClick={() => onNavigate('#projects')}
-                                className="bg-gradient-to-r from-[#63b3ed] to-[#7c6ff7] text-white font-semibold text-sm px-7 py-3 rounded-full border-none cursor-pointer transition-all hover:opacity-85 hover:-translate-y-0.5 active:scale-95"
-                            >
-                                View my work
-                            </button>
-                            <button
-                                onClick={() => onNavigate('#contact')}
-                                className="bg-transparent text-[#e2e8f0] font-medium text-sm px-7 py-3 rounded-full border border-white/10 cursor-pointer transition-all hover:border-[#63b3ed]/40 hover:bg-[#63b3ed]/10 active:scale-95"
-                            >
-                                Get in touch
-                            </button>
-                        </div>
-                    </div>
-
-                    {/* Right Column - Photo */}
-                    <div
-                        className="hidden md:flex justify-center"
-                        style={{
-                            opacity: isVisible ? 1 : 0,
-                            transform: isVisible ? 'none' : 'translateX(30px)',
                             transition: 'opacity 0.8s ease 300ms, transform 0.8s ease 300ms',
                         }}
                     >
@@ -89,7 +37,7 @@ export function Hero({ onNavigate }: HeroProps) {
                             <div className="absolute -inset-1.5 rounded-full border border-[#63b3ed]/20" />
 
                             {/* Profile Photo */}
-                            <div className="w-[260px] h-[260px] rounded-full overflow-hidden bg-gradient-to-br from-[#1e293b] to-[#0f172a] border-3 border-[#63b3ed]/50 relative">
+                            <div className="w-[200px] h-[200px] sm:w-[230px] sm:h-[230px] md:w-[260px] md:h-[260px] rounded-full overflow-hidden bg-gradient-to-br from-[#1e293b] to-[#0f172a] border-2 border-[#63b3ed]/50 relative">
                                 <img
                                     src={PERSONAL_INFO.photo}
                                     alt={`${PERSONAL_INFO.name} — ${PERSONAL_INFO.title}`}
@@ -120,12 +68,64 @@ export function Hero({ onNavigate }: HeroProps) {
                             </div>
                         </div>
                     </div>
+
+                    {/* Left Column - Content */}
+                    <div
+                        className="md:order-1 text-center md:text-left"
+                        style={{
+                            opacity: isVisible ? 1 : 0,
+                            transform: isVisible ? 'none' : 'translateY(20px)',
+                            transition: 'opacity 0.7s ease 100ms, transform 0.7s ease 100ms',
+                        }}
+                    >
+                        {/* Badge */}
+                        <div className="font-mono text-xs text-[#63b3ed] uppercase tracking-[0.15em] mb-5 flex items-center justify-center md:justify-start gap-2.5">
+                            <span className="inline-block w-6 h-px bg-[#63b3ed]" />
+                            Full Stack Developer · {PERSONAL_INFO.location}
+                        </div>
+
+                        {/* Heading */}
+                        <h1 className="font-[Syne] text-[clamp(36px,6vw,72px)] font-extrabold leading-[1.05] tracking-[-0.03em] mb-4 text-[#f8fafc]">
+                            Hi, I'm<br />
+                            <span className="bg-gradient-to-r from-[#63b3ed] via-[#7c6ff7] to-[#68d391] bg-clip-text text-transparent">
+                                {PERSONAL_INFO.name}
+                            </span>
+                        </h1>
+
+                        {/* Subtitle */}
+                        <p className="font-[Syne] text-[clamp(15px,2vw,20px)] text-[#64748b] mb-6 leading-[1.5]">
+                            I craft scalable web apps with<br />
+                            <span className="text-[#94a3b8]">Laravel · React · TypeScript</span>
+                        </p>
+
+                        {/* Description */}
+                        <p className="text-sm text-[#64748b] leading-[1.85] max-w-[430px] mb-10 mx-auto md:mx-0">
+                            From RESTful APIs to interactive React frontends — I build full stack applications
+                            that are fast, maintainable, and delightful to use.
+                        </p>
+
+                        {/* CTA Buttons */}
+                        <div className="flex gap-3 flex-wrap justify-center md:justify-start">
+                            <button
+                                onClick={() => onNavigate('#projects')}
+                                className="bg-gradient-to-r from-[#63b3ed] to-[#7c6ff7] text-white font-semibold text-sm px-7 py-3 rounded-full border-none cursor-pointer transition-all hover:opacity-85 hover:-translate-y-0.5 active:scale-95"
+                            >
+                                View my work
+                            </button>
+                            <button
+                                onClick={() => onNavigate('#contact')}
+                                className="bg-transparent text-[#e2e8f0] font-medium text-sm px-7 py-3 rounded-full border border-white/10 cursor-pointer transition-all hover:border-[#63b3ed]/40 hover:bg-[#63b3ed]/10 active:scale-95"
+                            >
+                                Get in touch
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Scroll Indicator */}
-                <div 
-                    className="mt-18 flex items-center gap-3 transition-opacity duration-1000"
-                    style={{ 
+                <div
+                    className="mt-16 flex items-center justify-center md:justify-start gap-3 transition-opacity duration-1000"
+                    style={{
                         opacity: isVisible ? 0.4 : 0,
                         transitionDelay: '1.2s'
                     }}
