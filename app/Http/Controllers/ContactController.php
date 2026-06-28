@@ -17,7 +17,7 @@ class ContactController extends Controller
         ]);
 
         try {
-            Mail::to(config('mail.from.address'))->send(new ContactMessage(
+            Mail::to('almazanjoshuanoel@gmail.com')->send(new ContactMessage(
                 $validated['name'],
                 $validated['email'],
                 $validated['message']
@@ -27,7 +27,6 @@ class ContactController extends Controller
                 'success' => true,
                 'message' => 'Your message has been sent successfully!'
             ]);
-
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
